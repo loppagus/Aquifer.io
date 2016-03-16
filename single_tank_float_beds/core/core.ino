@@ -6,6 +6,13 @@
 const int chipSelect = 4;
 File growlog;
 
+#define ONE_WIRE_BUS 2  //wire on port 2
+OneWire oneWire(ONE_WIRE_BUS);
+DallasTemperature sensors(&oneWire);
+
+#define RELAY_air
+#define RELAY_light
+
 void setup() {
   Serial.begin(9600);
   Serial.println("starting system..");
@@ -32,7 +39,7 @@ void setup() {
         Serial.println("growlog.csv exists.");
          } else {
           Serial.println("growlog.csv doesn't exist.");
-      }    
+      }
   }
 
   Serial.println("system started");
@@ -41,34 +48,58 @@ void setup() {
 }
 
 void loop() {
+  file_write();
+}
+
+void file_write() {
+
+
+  float dataString[] = {}; //values ready to bewritten on the sd card
 
 
 
-float dataString[] = {}; //values ready to bewritten on the sd card
+   File dataFile = SD.open("growlog.csv", FILE_WRITE); //starting sd card to write.
 
+    // if the file is available, write to it:
+    if (dataFile) {
+      int i;
+      for (i = 0; i < 3; i = i + 1) {
+          dataFile.print(dataString[i]);
+          if (i < 2) {
+              dataFile.print(",");
+          }
+      }
+      dataFile.println();
+      dataFile.close();
+      // print to the serial port too:
 
-  
- File dataFile = SD.open("growlog.csv", FILE_WRITE); //starting sd card to write. 
-
-  // if the file is available, write to it:
-  if (dataFile) {
-    int i;
-    for (i = 0; i < 3; i = i + 1) {  
-        dataFile.print(dataString[i]);
-        if (i < 2) {
-            dataFile.print(",");
-        }
     }
-    dataFile.println();
-    dataFile.close();
-    // print to the serial port too:
-    
-  }
-  // if the file isn't open, pop up an error:
-  else {
-    Serial.println("error opening datalog.csv");
-  }
-Serial.println("file writing finished"); //At this point a new write sequence can start. sd card can only write one set of variables at a time
+    // if the file isn't open, pop up an error:
+    else {
+      Serial.println("error opening datalog.csv");
+    }
+  Serial.println("file writing finished"); //At this point a new write sequence can start. sd card can only write one set of variables at a time
+}
 
 
+void lights_on(){
+  if (RELAY_light = 1)
+    digitalWrite(RELAY_light, 0);
+  else
+    return;
+}
+
+
+void air_on(){
+    if (RELAY_light = 0)
+      digitalWrite(RELAY_air, 1);
+    else
+      return;
+}
+
+void air_off(){
+  if (RELAY_air = 1)
+    digitalWrite(RELAY_air, 0);
+  else
+    return;
 }
