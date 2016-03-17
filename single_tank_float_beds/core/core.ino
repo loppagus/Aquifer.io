@@ -2,6 +2,7 @@
 #include <DallasTemperature.h>
 #include <SPI.h>
 #include <SD.h>
+#include <Narcoleptic.h>
 
 const int chipSelect = 4;
 File growlog;
@@ -10,8 +11,8 @@ File growlog;
 OneWire oneWire(ONE_WIRE_BUS);
 DallasTemperature sensors(&oneWire);
 
-#define RELAY_air
-#define RELAY_light
+#define RELAY_air 7
+#define RELAY_light 8
 
 void setup() {
   Serial.begin(9600);
@@ -48,7 +49,7 @@ void setup() {
 }
 
 void loop() {
-  file_write();
+ d
 }
 
 void file_write() {
@@ -81,25 +82,18 @@ void file_write() {
   Serial.println("file writing finished"); //At this point a new write sequence can start. sd card can only write one set of variables at a time
 }
 
-
 void lights_on(){
-  if (RELAY_light = 1)
     digitalWrite(RELAY_light, 0);
-  else
-    return;
 }
 
+void lights_off(){
+    digitalWrite(RELAY_light, 1);
+}
 
 void air_on(){
-    if (RELAY_light = 0)
       digitalWrite(RELAY_air, 1);
-    else
-      return;
 }
 
 void air_off(){
-  if (RELAY_air = 1)
     digitalWrite(RELAY_air, 0);
-  else
-    return;
 }
