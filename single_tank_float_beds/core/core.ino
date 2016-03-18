@@ -48,6 +48,10 @@ void setup() {
 }
 
 void loop() {
+
+
+
+
   file_write();
 }
 
