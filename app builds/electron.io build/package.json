@@ -1,0 +1,22 @@
+
+
+{
+  "name": "Aquifer.io",
+  "version": "0.1.0",
+  "description": "Aquaponics frontend",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Audax R x D",
+  "license": "none",
+  "devDependencies": {
+    "electron-prebuilt": "^0.36.7"
+  },
+    
+"dependencies": {
+    "electron-prebuilt": "^0.36.7",
+    "johnny-five":"0.9.19",
+    "serialport":"2.0.6"
+  }
+}
