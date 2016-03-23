@@ -9,17 +9,17 @@
     <!-- Bootstrap CSS -->
       <link rel="stylesheet" href="source/css/master.css" >
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
-      
+
       <script src="source/lib/p5.js"></script>
       <script src="app.js"></script>
       <script src="app_1.js"></script>
        <script src="test.js"></script>
-      
+
   </head>
   <body>
-   
 
-  
+
+
  <header>
      <nav class="navbar navbar-full navbar-light bg-faded">
             <a class="navbar-brand" href="#">Aquifer.io</a>
@@ -37,12 +37,33 @@
           </nav>
 </header>
  <div id='main'>
-     
-    <article> 
-        <div id="myContainer"></div>
-       
-      
-        
+
+    <article>
+      <script src="node_modules/vis/dist/vis.js"></script>
+      <link href="node_modules/vis/dist/vis.css" rel="stylesheet" type="text/css" />
+    <div id="visualization"></div>
+
+    <script type="text/javascript">
+
+      var container = document.getElementById('visualization');
+      var items = [
+        {x: '2014-06-11', y: 10},
+        {x: '2014-06-12', y: 25},
+        {x: '2014-06-13', y: 30},
+        {x: '2014-06-14', y: 10},
+        {x: '2014-06-15', y: 15},
+        {x: '2014-06-16', y: 30}
+      ];
+
+      var dataset = new vis.DataSet(items);
+      var options = {
+        start: '2014-06-10',
+        end: '2014-06-18'
+      };
+      var graph2d = new vis.Graph2d(container, dataset, options);
+    </script>
+
+
         <h2>System Status</h2>
           <div class="table-responsive">
             <table class="table table-striped">
@@ -63,11 +84,11 @@
                   <td>overhead</td>
                   <td>13:30</td>
                 </tr>
-           
+
               </tbody>
             </table>
           </div>
-        
+
         </article>
     <nav><div class="aside_left">
             <ul class="nav nav-sidebar">
@@ -76,16 +97,16 @@
             <li><a href="#">Analytics</a></li>
             <li><a href="#">Export</a></li>
           </ul>
-        
+
         </div></nav>
-   
+
  </div>
  <footer>footer</footer>
-  
-     
-                                     
-                                     
-                                     
+
+
+
+
+
     <!-- jQuery first, then Bootstrap JS. -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.js" ></script>

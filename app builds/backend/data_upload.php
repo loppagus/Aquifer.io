@@ -1,22 +1,30 @@
+
+
 <?php
+$servername = "localhost"; //server port
+$username = "root"; //username
+$password = "";  //password
+$dbname = "aquifer";  //data base name
 
-    // Prepare variables for database connection
+// Create connection
+$conn = new mysqli($servername, $username, $password,$dbname); //connect to db
 
-    $dbusername = "CORE";  // enter database username, I used "arduino" in step 2.2
-    $dbpassword = "CORE";  // enter database password, I used "arduinotest" in step 2.2
-    $server = "localhost"; // IMPORTANT: if you are using XAMPP enter "localhost", but if you have an online website enter its address, ie."www.yourwebsite.com"
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error); //report error connecting
+}
+echo "Connected successfully";
 
-    // Connect to your database
+ $sql = "INSERT INTO test (value) VALUES ('".$_GET["value"]."');"; //INSERT value
 
-    $dbconnect = mysql_pconnect($server, $dbusername, $dbpassword);
-    $dbselect = mysql_select_db("core",$dbconnect);
+if ($conn->query($sql) === TRUE) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;  // report error
+}
 
-    // Prepare the SQL statement
+$conn->close(); //close db connection
 
-    $sql = "INSERT INTO core.sensor (value) VALUES ('".$_GET["value"]."')";
 
-    // Execute SQL statement
-
-    mysql_query($sql);
-
+//  $sql = "INSERT INTO aquifer.test (value) VALUES ('".$_GET["value"]."')";
 ?>
