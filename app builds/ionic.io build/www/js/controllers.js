@@ -12,7 +12,7 @@ angular.module('app.controllers', [])
 
 })
    
-.controller('dataCtrl', function($scope) {
+.controller('analyticsCtrl', function($scope) {
 
 })
    

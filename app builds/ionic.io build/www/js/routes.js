@@ -38,12 +38,12 @@ angular.module('app.routes', [])
     }
   })
 
-  .state('tabsController.data', {
+  .state('tabsController.analytics', {
     url: '/data',
     views: {
       'tab2': {
-        templateUrl: 'templates/data.html',
-        controller: 'dataCtrl'
+        templateUrl: 'templates/analytics.html',
+        controller: 'analyticsCtrl'
       }
     }
   })
@@ -58,10 +58,14 @@ angular.module('app.routes', [])
     }
   })
 
-  .state('profile', {
+  .state('tabsController.profile', {
     url: '/profile',
-    templateUrl: 'templates/profile.html',
-    controller: 'profileCtrl'
+    views: {
+      'tab4': {
+        templateUrl: 'templates/profile.html',
+        controller: 'profileCtrl'
+      }
+    }
   })
 
 $urlRouterProvider.otherwise('/login')

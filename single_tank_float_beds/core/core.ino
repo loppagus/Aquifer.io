@@ -52,7 +52,7 @@ void loop() {
 
 
 
-  file_write();
+
 }
 
 void file_write() {
@@ -93,6 +93,13 @@ void lights_on(){
     return;
 }
 
+
+void lights_off(){
+  if (RELAY_light = 0)
+    digitalWrite(RELAY_light, 1);
+  else
+    return;
+}
 
 void air_on(){
     if (RELAY_light = 0)
