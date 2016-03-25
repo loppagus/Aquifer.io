@@ -25,9 +25,9 @@ angular.module('app.controllers', [])
 })
 
 .controller('dataCtrl',function($scope, $http){
-    $http.get("http://localhost:80/aquifer.io/data.php")
+    $http.get("http://localhost/aquifer.io/ionic.php")
     .then(function (response)
       {
-      $scope.data = response.data.records;}
+      $scope.data = response.data;}
       );
 })
