@@ -42,8 +42,18 @@ connection.connect(function(err) {
 var http = require('http');
 var port = 9000;
 
-var httpserver = http.createServer(function (req, resp) {
-// switch (req.method) {
+http.createServer(function (req, resp) {
+  resp.writeHead(200, {"Content-Type": "text/html"});
+  resp.write("
+  <html>
+    <body>
+        <h1> hi</h1>
+    </body>
+  </html>
+  ");
+  resp.end();
+ //
+ // switch (req.method) {
 //   case "GET":
 //
 //     break;
@@ -55,6 +65,4 @@ var httpserver = http.createServer(function (req, resp) {
 //     break;
 
 
-});
-
-httpserver.listen(port);
+}).listen(port);
